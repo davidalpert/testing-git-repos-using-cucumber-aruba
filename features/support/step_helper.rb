@@ -30,11 +30,11 @@ module Example
     end
 
     def relative_dir(path)
-      abs_dir(path).delete_prefix(aruba.root_directory)[1..-1]
+      abs_dir(path).delete_prefix(aruba.root_directory)[1..]
     end
 
     def relative_dir_from_abs(path)
-      path.delete_prefix(aruba.root_directory)[1..-1]
+      path.delete_prefix(aruba.root_directory)[1..]
     end
 
     def abs_dir(path)
@@ -53,9 +53,9 @@ module Example
       run_command_and_stop(cmd, fail_on_error: fail_on_error)
 
       matcher = case channel
-                when "output"; then :have_output
-                when "stderr"; then :have_output_on_stderr
-                when "stdout"; then :have_output_on_stdout
+                when 'output'; then :have_output
+                when 'stderr'; then :have_output_on_stderr
+                when 'stdout'; then :have_output_on_stdout
                 end
 
       command = aruba.command_monitor.find(Aruba.platform.detect_ruby(cmd))
